@@ -1,6 +1,6 @@
 <?php
 
-namespace ArrayCollection\Filter;
+namespace ArrayCollection;
 
 class ArrayCollection extends ArrayIterator
 {
