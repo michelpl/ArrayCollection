@@ -4,7 +4,7 @@ namespace ArrayCollection;
 
 class ArrayCollection extends ArrayIterator
 {
-
+    
     private $limitITerator;
     private $limit;
     private $start;
@@ -40,12 +40,22 @@ class ArrayCollection extends ArrayIterator
         return json_encode($this);
     }
 
-    public function inArray($filter, $column)
+    public function filterIn($filter, $column)
     {
         return new FilterIn($this, $filter, $column);
     }
 
-    public function notInArray($filter, $column)
+    public function contains($value)
+    {
+        return in_array($value, $this->getArrayCopy());
+    }
+
+    public function notContains($value)
+    {
+        return !in_array($value, $this->getArrayCopy());
+    }
+
+    public function filterNotIn($filter, $column)
     {
         return new FilterNotIn($this, $filter, $column);
     }
@@ -59,5 +69,4 @@ class ArrayCollection extends ArrayIterator
     {
         return array_values($this->getArrayCopy());
     }
-
 }
